@@ -6,7 +6,10 @@ const API_GATEWAY_URL = process.env.API_GATEWAY_URL;
 exports.index = async function(req, res) {
   try {
     const response = await axios.get(`https://nhfi7qbnh4.execute-api.ap-southeast-1.amazonaws.com/act1/hikes`);
-    const hikes = response.data;
+    const hikes = response.data.map(hike => ({
+      ...hike,
+      HIKE_DATE: new Date(hike.HIKE_DATE)
+    }));
     console.log(JSON.stringify(hikes));
     res.render('hike', {title: 'My Hiking Log', hikes: hikes});
   } catch (err) {
