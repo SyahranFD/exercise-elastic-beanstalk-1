@@ -40,9 +40,9 @@ block content
         td Location
         td Distance
         td Weather
-      each hike in hikes
+      each hike in hikes.data
         tr
-          td #{hike.HIKE_DATE.toDateString()}
+          td #{hike.HIKE_DATE}
           td #{hike.NAME}
           td #{hike.LOCATION}
           td #{hike.DISTANCE}
